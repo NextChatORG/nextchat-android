@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">NextChat</string>
+    <string name="title_activity_welcome_screen">WelcomeScreen</string>
+</resources>
