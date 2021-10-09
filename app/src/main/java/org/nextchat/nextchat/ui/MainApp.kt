@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
 import org.nextchat.nextchat.constants.AccountStorage
+import org.nextchat.nextchat.repositories.RepositoriesManager
 import org.nextchat.nextchat.ui.screens.Screens
 import org.nextchat.nextchat.ui.screens.general.SplashScreen
 import org.nextchat.nextchat.ui.screens.home.HomeScreen
@@ -17,7 +18,8 @@ import org.nextchat.nextchat.ui.screens.index.WelcomeScreen
 @Composable
 fun MainApp(
     accountStorage: AccountStorage,
-    navController: NavHostController
+    navController: NavHostController,
+    repositoriesManager: RepositoriesManager,
 ) {
     NavHost(
         navController = navController,
@@ -37,8 +39,8 @@ fun MainApp(
         }
         composable(route = Screens.SignUp.route) {
             SignUpScreen(
-                accountStorage = accountStorage,
                 navController = navController,
+                signUpRepository = repositoriesManager.signUp,
             )
         }
         composable(

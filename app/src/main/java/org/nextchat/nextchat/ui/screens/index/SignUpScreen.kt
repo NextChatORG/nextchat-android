@@ -20,9 +20,10 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import kotlinx.coroutines.launch
 import org.nextchat.nextchat.ui.layouts.IndexLayout
 import org.nextchat.nextchat.R
-import org.nextchat.nextchat.constants.AccountStorage
+import org.nextchat.nextchat.repositories.index.SignUpRepository
 import org.nextchat.nextchat.ui.screens.Screens
 import org.nextchat.nextchat.ui.widgets.FractionSpacer
 import org.nextchat.nextchat.ui.widgets.ResourceText
@@ -30,8 +31,8 @@ import org.nextchat.nextchat.ui.widgets.TextFieldError
 
 @Composable
 fun SignUpScreen(
-    accountStorage: AccountStorage,
-    navController: NavController
+    navController: NavController,
+    signUpRepository: SignUpRepository,
 ) {
     // States
     var username by remember { mutableStateOf("") }
@@ -95,8 +96,25 @@ fun SignUpScreen(
                 password = password,
                 repeatPassword = repeatPassword,
                 // General
-                accountStorage = accountStorage,
-                navController = navController,
+                signUpRepository = signUpRepository,
+                // Callback
+                onErrors = { errors ->
+                    // Reset errors
+                    usernameError = ""
+                    passwordError = ""
+                    repeatPasswordError = ""
+                    repeatPassword = ""
+
+                    // Set new errors
+                    for ((field, message) in errors.iterator()) {
+                        when (field) {
+                            "username" -> { usernameError = message }
+                            "password" -> { passwordError = message }
+                            "repeat_password" -> { repeatPasswordError = message }
+                            else -> { println("Cannot parse: $field as error (Message: $message)") }
+                        }
+                    }
+                }
             )
         }
     }
@@ -155,15 +173,29 @@ private fun SignUpButton(
     password: String,
     repeatPassword: String,
     // General
-    accountStorage: AccountStorage,
-    navController: NavController,
+    signUpRepository: SignUpRepository,
+    // Callbacks
+    onErrors: (Map<String, String>) -> Unit,
 ) {
     // Hooks
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
 
     // Content
-    Button(onClick = {}) {
+    Button(onClick = {
+        scope.launch {
+            signUpRepository.handleSubmit(
+                // Fields
+                username = username,
+                password = password,
+                confirmPassword = repeatPassword,
+                // General
+                context = context,
+                    // Callbacks
+                onErrors = onErrors,
+            )
+        }
+    }) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(imageVector = Icons.Filled.KeyboardArrowRight, "")
             FractionSpacer(fraction = 0.5F)

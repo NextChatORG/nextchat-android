@@ -1,4 +1,4 @@
-package org.nextchat.nextchat.ui.utils
+package org.nextchat.nextchat.utils
 
 import android.content.Context
 import org.nextchat.nextchat.R
