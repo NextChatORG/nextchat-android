@@ -1,0 +1,10 @@
+mutation signUp($username: String!, $password: String!, $confirmPassword: String!) {
+    signUp(username: $username, password: $password, confirmPassword: $confirmPassword) {
+        accessToken
+        id
+        role
+        permissions
+        recoverCodes
+        username
+    }
+}

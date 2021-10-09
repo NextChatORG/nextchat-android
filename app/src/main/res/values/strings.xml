@@ -1,4 +1,27 @@
 <resources>
+    <!-- General texts -->
     <string name="app_name">NextChat</string>
-    <string name="title_activity_welcome_screen">WelcomeScreen</string>
+    <string name="slogan">Connect with people across the world in real-time!</string>
+
+    <string name="INTERNAL_ERROR">Unexpected error</string>
+
+    <!-- Welcome screen texts -->
+    <string name="welcome_screen_sign_up_button">I\'m new here</string>
+    <string name="welcome_screen_sign_in_button">Sign in</string>
+
+    <!-- Auth texts -->
+    <string name="AUTH_EMPTY_USERNAME">You must enter the username</string>
+    <string name="AUTH_USERNAME_INVALID_LENGTH">The username must have between 4 and 15 characters</string>
+    <string name="AUTH_DUPLICATED_USERNAME">The username already exists</string>
+
+    <string name="AUTH_EMPTY_PASSWORD">You must enter the password</string>
+    <string name="AUTH_PASSWORD_INVALID_LENGTH">The password must be between 8 and 40 characters</string>
+
+    <string name="AUTH_EMPTY_REPEAT_PASSWORD">You must repeat your password</string>
+    <string name="AUTH_PASSWORDS_DONT_MATCH">The passwords do not match</string>
+
+    <string name="AUTH_WRONG_PASSWORD">The username or password is incorrect</string>
+
+    <!-- Sign up texts -->
+    <string name="sign_up_title">Get started</string>
 </resources>

@@ -8,20 +8,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import org.nextchat.nextchat.R
+import org.nextchat.nextchat.core.Screens
 import org.nextchat.nextchat.widgets.NextChatLogo
 
 @Composable
-fun WelcomeScreen(navController: NavHostController) {
+fun WelcomeScreen(navController: NavController) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight()
+                .fillMaxSize()
                 .padding(start = 24.dp, end = 24.dp),
             verticalArrangement = Arrangement.Center
         ) {
@@ -37,7 +38,7 @@ fun WelcomeScreen(navController: NavHostController) {
             Spacer(modifier = Modifier.height(12.dp))
             // Extra message
             Text(
-                "Connect with people across the world in real-time!",
+                text = stringResource(id = R.string.slogan),
                 color = Color.Gray,
                 fontSize = 6.em,
                 textAlign = TextAlign.Center,
@@ -46,18 +47,18 @@ fun WelcomeScreen(navController: NavHostController) {
             // Buttons
             Button(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {
-                    navController.navigate("sign_up")
-                }
+                onClick = { navController.navigate(route = Screens.SignUpScreen.route) }
             ) {
-                Text("I'm new here")
+                Text(text = stringResource(id = R.string.welcome_screen_sign_up_button))
             }
             Spacer(modifier = Modifier.height(12.dp))
             TextButton(
                 modifier = Modifier.fillMaxWidth(),
-                onClick = {}
+                onClick = {
+                    navController.navigate(route = Screens.HomeScreen.route)
+                }
             ) {
-                Text("Sign in")
+                Text(text = stringResource(id = R.string.welcome_screen_sign_in_button))
             }
         }
 }
