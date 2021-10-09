@@ -1,0 +1,40 @@
+<resources>
+    <!-- General texts -->
+    <string name="app_name">NextChat</string>
+    <string name="slogan">¡Conecta con otras personas alrededor del mundo en tiempo real!</string>
+
+    <string name="INTERNAL_ERROR">Error inesperado</string>
+
+    <!-- Welcome screen texts -->
+    <string name="welcome_screen_sign_up_button">Crear una cuenta</string>
+    <string name="welcome_screen_sign_in_button">Iniciar sesión</string>
+
+    <!-- Auth texts -->
+    <string name="AUTH_EMPTY_USERNAME">Debes ingresar el nombre de usuario</string>
+    <string name="AUTH_USERNAME_INVALID_FORMAT">El nombre de usuario no puede contener caracteres especiales o espacios en blanco</string>
+    <string name="AUTH_USERNAME_INVALID_LENGTH">El nombre de usuario debe tener entre 4 y 15 caracteres</string>
+    <string name="AUTH_DUPLICATED_USERNAME">El nombre de usuario ya está en uso</string>
+
+    <string name="AUTH_EMPTY_PASSWORD">Debes ingresar la contraseña</string>
+    <string name="AUTH_PASSWORD_INVALID_FORMAT">La contrasñea no puede contener caracteres especiales o espacios en blanco</string>
+    <string name="AUTH_PASSWORD_INVALID_LENGTH">La contraseña debe tener entre 8 y 40 caracteres</string>
+
+    <string name="AUTH_EMPTY_REPEAT_PASSWORD">Debes repetir la contraseña</string>
+    <string name="AUTH_PASSWORDS_DONT_MATCH">Las contraseñas no coinciden</string>
+
+    <string name="AUTH_WRONG_PASSWORD">El nombre de usuario o la contraseña son incorrectos</string>
+    <string name="AUTH_PRIVACY_POLICY">Al hacer click en el botón estás aceptando nuestros Términos de Servicio y Políticas de Privacidad.</string>
+    <string name="AUTH_SCREENSHOT_CODES">Por favor haz una captura de pantalla para guardar estos códigos, los podrás utilizar para recuperar tu cuenta si olvidas la contraseña.</string>
+    <string name="AUTH_CODE_TEXT_CONTINUE">Continuar</string>
+
+    <!-- Sign up texts -->
+    <string name="sign_up_screen_title">Primeros pasos</string>
+    <string name="sign_up_screen_username_input">Nombre de usuario</string>
+    <string name="sign_up_screen_password_input">Contraseña</string>
+    <string name="sign_up_screen_repeat_password_input">Confirma la contraseña</string>
+    <string name="sign_up_screen_sign_in_button">Tengo una cuenta</string>
+    <string name="sign_up_screen_submit_button">Finalizar</string>
+
+    <!-- Recovery codes texts -->
+    <string name="recovery_codes_screen_title">Códigos de recuperación</string>
+</resources>
