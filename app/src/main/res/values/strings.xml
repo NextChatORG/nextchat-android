@@ -27,4 +27,7 @@
 
     <!-- Sign up texts -->
     <string name="sign_up_title">Get started</string>
+
+    <!-- Recovery codes texts -->
+    <string name="recovery_codes_title">Recovery codes</string>
 </resources>

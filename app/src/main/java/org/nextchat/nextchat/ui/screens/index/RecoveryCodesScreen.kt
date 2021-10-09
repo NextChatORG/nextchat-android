@@ -1,23 +1,22 @@
-package org.nextchat.nextchat.screens.index
+package org.nextchat.nextchat.ui.screens.index
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.ui.draw.clip
-import androidx.ui.res.stringResource
-import org.nextchat.nextchat.screens.Screens
-import org.nextchat.nextchat.layouts.IndexLayout
+import org.nextchat.nextchat.ui.layouts.IndexLayout
 import org.nextchat.nextchat.R
-import org.nextchat.nextchat.widgets.Spacer
-import org.nextchat.nextchat.widgets.Text
+import org.nextchat.nextchat.ui.screens.Screens
+import org.nextchat.nextchat.ui.widgets.FractionSpacer
+import org.nextchat.nextchat.ui.widgets.ResourceText
 
 @Composable
 fun RecoveryCodesScreen(
@@ -25,33 +24,34 @@ fun RecoveryCodesScreen(
     navController: NavController
 ) {
     IndexLayout(
-        title = "Recover codes",
-        titleMargin = 24.dp
-    )
-    {
+        title = R.string.recovery_codes_title,
+        titleMargin = 2F
+    ) {
         // Description
         RecoveryMessage()
-        Spacer(Modifier.height(12.dp))
+        FractionSpacer()
         // Codes
         codes.forEach { code ->
             BoxCode(code)
-            Spacer(Modifier.height(8.dp))
+            FractionSpacer(fraction = 0.5F)
         }
-        Spacer(Modifier.height(16.dp))
+        FractionSpacer(fraction = 1.5F)
         // Buttons
         ButtonBox(navController)
     }
 }
 
 @Composable
-fun RecoveryMessage(){
-    Text(stringResource = stringResource(id = R.string.AUTH_SCREENSHOT_CODES),
+private fun RecoveryMessage() {
+    ResourceText(
+        id = R.string.AUTH_SCREENSHOT_CODES,
         modifier = Modifier.padding(start = 3.dp, end = 3.dp),
-        style = MaterialTheme.typography.caption)
+        style = MaterialTheme.typography.caption,
+    )
 }
 
 @Composable
-fun BoxCode(code: String) {
+private fun BoxCode(code: String) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -64,19 +64,19 @@ fun BoxCode(code: String) {
 }
 
 @Composable
-fun ButtonBox(navController: NavController) {
+private fun ButtonBox(navController: NavController) {
     Row(
         horizontalArrangement = Arrangement.End,
         modifier = Modifier.fillMaxWidth()
     ) {
         Button(onClick = {
-            navController.navigate(route = Screens.HomeScreen.route) {
-                popUpTo(route = Screens.HomeScreen.route) {
+            navController.navigate(route = Screens.Home.route) {
+                popUpTo(route = Screens.Home.route) {
                     inclusive = true
                 }
             }
         }) {
-            Text(stringResource = stringResource(id = R.string.AUTH_CODE_TEXT_CONTINUE))
+            ResourceText(id = R.string.AUTH_CODE_TEXT_CONTINUE)
         }
     }
 }

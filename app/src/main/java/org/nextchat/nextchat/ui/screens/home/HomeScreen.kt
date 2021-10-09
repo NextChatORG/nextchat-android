@@ -1,4 +1,4 @@
-package org.nextchat.nextchat.screens.home
+package org.nextchat.nextchat.ui.screens.home
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
@@ -6,22 +6,20 @@ import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.navigation.NavController
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.nextchat.nextchat.screens.Screens
-import org.nextchat.nextchat.utils.storage_keys
+import org.nextchat.nextchat.constants.AccountStorage
+import org.nextchat.nextchat.constants.StorageKeys
+import org.nextchat.nextchat.ui.screens.Screens
 
 @SuppressLint("CoroutineCreationDuringComposition")
 @Composable
 fun HomeScreen(
-    accountStorage: DataStore<Preferences>,
+    accountStorage: AccountStorage,
     navController: NavController
 ) {
     // States
@@ -33,7 +31,7 @@ fun HomeScreen(
     // Coroutines
     homeScope.launch {
         val preferences = accountStorage.data.first()
-        val uname = preferences[storage_keys.accountUsername]
+        val uname = preferences[StorageKeys.accountUsername]
 
         withContext(Dispatchers.Main) {
             username = uname ?: ""
@@ -44,9 +42,7 @@ fun HomeScreen(
     // Content
     Scaffold {
         Column {
-            Text(
-                text = "Username: $username"
-            )
+            Text(text = "Username: $username")
             Button(
                 onClick = {
                     homeScope.launch {
@@ -54,11 +50,7 @@ fun HomeScreen(
                             preferences.clear()
                         }
 
-                        navController.navigate(route = Screens.WelcomeScreen.route) {
-                            popUpTo(route = Screens.WelcomeScreen.route) {
-                                inclusive = true
-                            }
-                        }
+                        navController.navigate(route = Screens.Splash.route)
                     }
                 }
             ) {

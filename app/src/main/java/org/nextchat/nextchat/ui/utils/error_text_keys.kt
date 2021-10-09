@@ -1,9 +1,9 @@
-package org.nextchat.nextchat.utils
+package org.nextchat.nextchat.ui.utils
 
 import android.content.Context
 import org.nextchat.nextchat.R
 
-fun getTextByKey(context: Context, textKey: String): String {
+fun getErrorTextByKey(context: Context, textKey: String): String {
     return when (textKey) {
         // General messages
         "INTERNAL_ERROR" -> context.getString(R.string.INTERNAL_ERROR)
