@@ -10,10 +10,12 @@ fun getErrorTextByKey(context: Context, textKey: String): String {
 
         // Auth messages
         "AUTH_EMPTY_USERNAME" -> context.getString(R.string.AUTH_EMPTY_USERNAME)
+        "AUTH_USERNAME_INVALID_FORMAT" -> context.getString(R.string.AUTH_USERNAME_INVALID_FORMAT)
         "AUTH_USERNAME_INVALID_LENGTH" -> context.getString(R.string.AUTH_USERNAME_INVALID_LENGTH)
         "AUTH_DUPLICATED_USERNAME" -> context.getString(R.string.AUTH_DUPLICATED_USERNAME)
 
         "AUTH_EMPTY_PASSWORD" -> context.getString(R.string.AUTH_EMPTY_PASSWORD)
+        "AUTH_PASSWORD_INVALID_FORMAT" -> context.getString(R.string.AUTH_PASSWORD_INVALID_FORMAT)
         "AUTH_PASSWORD_INVALID_LENGTH" -> context.getString(R.string.AUTH_PASSWORD_INVALID_LENGTH)
 
         "AUTH_EMPTY_REPEAT_PASSWORD" -> context.getString(R.string.AUTH_EMPTY_REPEAT_PASSWORD)

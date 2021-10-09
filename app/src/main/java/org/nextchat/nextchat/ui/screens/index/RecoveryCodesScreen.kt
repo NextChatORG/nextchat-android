@@ -24,7 +24,7 @@ fun RecoveryCodesScreen(
     navController: NavController
 ) {
     IndexLayout(
-        title = R.string.recovery_codes_title,
+        title = R.string.recovery_codes_screen_title,
         titleMargin = 2F
     ) {
         // Description

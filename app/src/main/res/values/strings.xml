@@ -11,10 +11,12 @@
 
     <!-- Auth texts -->
     <string name="AUTH_EMPTY_USERNAME">You must enter the username</string>
+    <string name="AUTH_USERNAME_INVALID_FORMAT">The username can not contain special characters or whitespaces</string>
     <string name="AUTH_USERNAME_INVALID_LENGTH">The username must have between 4 and 15 characters</string>
     <string name="AUTH_DUPLICATED_USERNAME">The username already exists</string>
 
     <string name="AUTH_EMPTY_PASSWORD">You must enter the password</string>
+    <string name="AUTH_PASSWORD_INVALID_FORMAT">The password can not contain special characters or whitespaces</string>
     <string name="AUTH_PASSWORD_INVALID_LENGTH">The password must be between 8 and 40 characters</string>
 
     <string name="AUTH_EMPTY_REPEAT_PASSWORD">You must repeat your password</string>
@@ -26,8 +28,13 @@
     <string name="AUTH_CODE_TEXT_CONTINUE">Continue</string>
 
     <!-- Sign up texts -->
-    <string name="sign_up_title">Get started</string>
+    <string name="sign_up_screen_title">Get started</string>
+    <string name="sign_up_screen_username_input">Username</string>
+    <string name="sign_up_screen_password_input">Password</string>
+    <string name="sign_up_screen_repeat_password_input">Confirm the password</string>
+    <string name="sign_up_screen_sign_in_button">I have an account</string>
+    <string name="sign_up_screen_submit_button">Sign up</string>
 
     <!-- Recovery codes texts -->
-    <string name="recovery_codes_title">Recovery codes</string>
+    <string name="recovery_codes_screen_title">Recovery codes</string>
 </resources>

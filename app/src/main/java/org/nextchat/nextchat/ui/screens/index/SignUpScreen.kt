@@ -45,11 +45,11 @@ fun SignUpScreen(
     var repeatPasswordError by remember { mutableStateOf("") }
 
     // Content
-    IndexLayout(title = R.string.sign_up_title) {
+    IndexLayout(title = R.string.sign_up_screen_title) {
         // Username input
         OutlinedTextField(
             isError = usernameError.isNotEmpty(),
-            label = { Text("Username") },
+            label = { ResourceText(id = R.string.sign_up_screen_username_input) },
             modifier = Modifier.fillMaxWidth(),
             value = username,
             onValueChange = {
@@ -62,6 +62,7 @@ fun SignUpScreen(
         // Password input
         PasswordInput(
             error = passwordError,
+            label = R.string.sign_up_screen_password_input,
             value = password,
             onValueChange = { value ->
                 password = value
@@ -71,6 +72,7 @@ fun SignUpScreen(
         // Repeat password input
         PasswordInput(
             error = repeatPasswordError,
+            label = R.string.sign_up_screen_repeat_password_input,
             value = repeatPassword,
             onValueChange = { value ->
                 repeatPassword = value
@@ -123,6 +125,7 @@ fun SignUpScreen(
 @Composable
 private fun PasswordInput(
     error: String,
+    label: Int,
     value: String,
     onValueChange: (String) -> Unit
 ) {
@@ -133,7 +136,7 @@ private fun PasswordInput(
     OutlinedTextField(
         isError = error.isNotEmpty(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-        label = { Text("Password") },
+        label = { ResourceText(id = label) },
         modifier = Modifier.fillMaxWidth(),
         trailingIcon = {
             IconButton(onClick = { showingPassword = !showingPassword }) {
@@ -159,8 +162,8 @@ private fun SignInButton(
         modifier = Modifier.fillMaxWidth(0.6F),
         onClick = { navController.navigate(route = Screens.SignIn.route) }
     ) {
-        Text(
-            text = "I have an account",
+        ResourceText(
+            id = R.string.sign_up_screen_sign_in_button,
             textAlign = TextAlign.Center
         )
     }
@@ -199,7 +202,7 @@ private fun SignUpButton(
         Row(verticalAlignment = Alignment.CenterVertically) {
             Icon(imageVector = Icons.Filled.KeyboardArrowRight, "")
             FractionSpacer(fraction = 0.5F)
-            Text(text = "Sign up")
+            ResourceText(id = R.string.sign_up_screen_submit_button)
         }
     }
 }
