@@ -25,6 +25,8 @@ import org.nextchat.nextchat.repositories.index.SignUpRepository
 import org.nextchat.nextchat.widgets.ErrorText
 import org.nextchat.nextchat.R
 import org.nextchat.nextchat.layouts.IndexLayout
+import org.nextchat.nextchat.widgets.Spacer
+import org.nextchat.nextchat.widgets.Text
 
 @Composable
 fun SignUpScreen(
@@ -52,7 +54,7 @@ fun SignUpScreen(
         // Inputs
         OutlinedTextField(
             isError = usernameError.isNotEmpty(),
-            label = { Text("Username") },
+            label = { androidx.compose.material.Text("Username") },
             modifier = Modifier.fillMaxWidth(),
             value = username,
             onValueChange = {
@@ -61,13 +63,13 @@ fun SignUpScreen(
             }
         )
         ErrorText(message = usernameError)
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(Modifier.height(6.dp))
         OutlinedTextField(
             isError = passwordError.isNotEmpty(),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Password
             ),
-            label = { Text("Password") },
+            label = { androidx.compose.material.Text("Password") },
             modifier = Modifier.fillMaxWidth(),
             trailingIcon = {
                 IconButton(
@@ -87,13 +89,13 @@ fun SignUpScreen(
             }
         )
         ErrorText(message = passwordError)
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(Modifier.height(6.dp))
         OutlinedTextField(
             isError = repeatPasswordError.isNotEmpty(),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Password
             ),
-            label = { Text("Repeat password") },
+            label = { androidx.compose.material.Text("Repeat password") },
             modifier = Modifier.fillMaxWidth(),
             trailingIcon = {
                 IconButton(
@@ -113,15 +115,14 @@ fun SignUpScreen(
             }
         )
         ErrorText(message = repeatPasswordError)
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(Modifier.height(6.dp))
+
         // Information
         Text(
-            text = "By clicking the button below you will be agree to the Terms of Service and Privacy Policy.",
-            color = Color.Gray,
+            stringResource = stringResource(id = R.string.AUTH_PRIVACY_POLICY), color = Color.Gray,
             fontSize = MaterialTheme.typography.subtitle2.fontSize,
-            modifier = Modifier.padding(start = 2.dp)
-        )
-        Spacer(modifier = Modifier.height(36.dp))
+            modifier = Modifier.padding(start = 2.dp))
+        Spacer(Modifier.height(36.dp))
         // Buttons
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -173,7 +174,7 @@ fun SignUpScreen(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(imageVector = Icons.Filled.KeyboardArrowRight, "")
                     Spacer(modifier = Modifier.width(6.dp))
-                    Text("Sign up")
+                    androidx.compose.material.Text("Sign up")
                 }
             }
         }

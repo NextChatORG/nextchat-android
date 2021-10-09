@@ -12,8 +12,12 @@ import androidx.navigation.NavController
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.ui.draw.clip
-import org.nextchat.nextchat.core.Screens
+import androidx.ui.res.stringResource
+import org.nextchat.nextchat.screens.Screens
 import org.nextchat.nextchat.layouts.IndexLayout
+import org.nextchat.nextchat.R
+import org.nextchat.nextchat.widgets.Spacer
+import org.nextchat.nextchat.widgets.Text
 
 @Composable
 fun RecoveryCodesScreen(
@@ -23,42 +27,56 @@ fun RecoveryCodesScreen(
     IndexLayout(
         title = "Recover codes",
         titleMargin = 24.dp
-    ) {
+    )
+    {
         // Description
-        Text(
-            text = "Please take a screenshot to save the codes below, you could use them to recover your account when you forget its password.",
-            modifier = Modifier.padding(start = 3.dp, end = 3.dp),
-            style = MaterialTheme.typography.caption,
-        )
-        Spacer(modifier = Modifier.height(12.dp))
+        RecoveryMessage()
+        Spacer(Modifier.height(12.dp))
         // Codes
         codes.forEach { code ->
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(6.dp))
-                    .background(Color(0xFFEEEEEE))
-                    .padding(12.dp, top = 8.dp, bottom = 8.dp)
-            ) {
-                Text(text = code)
-            }
-            Spacer(modifier = Modifier.height(8.dp))
+            BoxCode(code)
+            Spacer(Modifier.height(8.dp))
         }
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(Modifier.height(16.dp))
         // Buttons
-        Row(
-            horizontalArrangement = Arrangement.End,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Button(onClick = {
-                navController.navigate(route = Screens.HomeScreen.route) {
-                    popUpTo(route = Screens.HomeScreen.route) {
-                        inclusive = true
-                    }
+        ButtonBox(navController)
+    }
+}
+
+@Composable
+fun RecoveryMessage(){
+    Text(stringResource = stringResource(id = R.string.AUTH_SCREENSHOT_CODES),
+        modifier = Modifier.padding(start = 3.dp, end = 3.dp),
+        style = MaterialTheme.typography.caption)
+}
+
+@Composable
+fun BoxCode(code: String) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(6.dp))
+            .background(Color(0xFFEEEEEE))
+            .padding(12.dp, top = 8.dp, bottom = 8.dp)
+    ) {
+        Text(text = code)
+    }
+}
+
+@Composable
+fun ButtonBox(navController: NavController) {
+    Row(
+        horizontalArrangement = Arrangement.End,
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Button(onClick = {
+            navController.navigate(route = Screens.HomeScreen.route) {
+                popUpTo(route = Screens.HomeScreen.route) {
+                    inclusive = true
                 }
-            }) {
-                Text(text = "Continue")
             }
+        }) {
+            Text(stringResource = stringResource(id = R.string.AUTH_CODE_TEXT_CONTINUE))
         }
     }
 }

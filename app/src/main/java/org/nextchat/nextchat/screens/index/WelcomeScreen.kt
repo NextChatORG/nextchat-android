@@ -14,8 +14,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.navigation.NavController
 import org.nextchat.nextchat.R
-import org.nextchat.nextchat.core.Screens
+import org.nextchat.nextchat.screens.Screens
 import org.nextchat.nextchat.widgets.NextChatLogo
+import org.nextchat.nextchat.widgets.Spacer
+import org.nextchat.nextchat.widgets.Text
 
 @Composable
 fun WelcomeScreen(navController: NavController) {
@@ -27,38 +29,51 @@ fun WelcomeScreen(navController: NavController) {
             verticalArrangement = Arrangement.Center
         ) {
             // Image
-            Image(
-                painterResource(R.drawable.ic_begin_chat),
-                contentDescription = "Begin chat image",
-                modifier = Modifier.fillMaxWidth()
-            )
-            Spacer(modifier = Modifier.height(84.dp))
+            BeginImage()
+            Spacer(Modifier.height(84.dp))
             // NextChat logo
             NextChatLogo()
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(Modifier.height(12.dp))
             // Extra message
-            Text(
-                text = stringResource(id = R.string.slogan),
+            Text(stringResource(id = R.string.slogan),
                 color = Color.Gray,
                 fontSize = 6.em,
-                textAlign = TextAlign.Center,
-            )
-            Spacer(modifier = Modifier.height(48.dp))
+                textAlign = TextAlign.Center)
+            Spacer(Modifier.height(48.dp))
             // Buttons
-            Button(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = { navController.navigate(route = Screens.SignUpScreen.route) }
-            ) {
-                Text(text = stringResource(id = R.string.welcome_screen_sign_up_button))
-            }
-            Spacer(modifier = Modifier.height(12.dp))
-            TextButton(
-                modifier = Modifier.fillMaxWidth(),
-                onClick = {
-                    navController.navigate(route = Screens.HomeScreen.route)
-                }
-            ) {
-                Text(text = stringResource(id = R.string.welcome_screen_sign_in_button))
-            }
+            ButtonNewHere(navController)
+            Spacer(Modifier.height(12.dp))
+            ButtonSignIn(navController)
         }
+}
+
+
+@Composable
+fun BeginImage() {
+    Image(
+        painterResource(R.drawable.ic_begin_chat),
+        contentDescription = "Begin chat BeginImage",
+        modifier = Modifier.fillMaxWidth()
+    )
+}
+
+@Composable
+fun ButtonNewHere(navController: NavController){
+    Button(
+        modifier = Modifier.fillMaxWidth(),
+        onClick = { navController.navigate(route = Screens.SignUpScreen.route) }
+    ) {
+        Text(text = stringResource(id = R.string.welcome_screen_sign_up_button))
+    }
+}
+@Composable
+fun ButtonSignIn(navController: NavController) {
+    TextButton(
+        modifier = Modifier.fillMaxWidth(),
+        onClick = {
+            navController.navigate(route = Screens.HomeScreen.route)
+        }
+    ) {
+        Text(text = stringResource(id = R.string.welcome_screen_sign_in_button))
+    }
 }

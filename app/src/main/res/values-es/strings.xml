@@ -21,6 +21,9 @@
     <string name="AUTH_PASSWORDS_DONT_MATCH">Las contraseñas no coinciden</string>
 
     <string name="AUTH_WRONG_PASSWORD">El nombre de usuario o la contraseña son incorrectos</string>
+    <string name="AUTH_PRIVACY_POLICY">Al hacer click en el boton estas aceptando nuestros terminos de servicio y condiciones de privacidad.</string>
+    <string name="AUTH_SCREENSHOT_CODES">Porfavor tomar una captura para guardar estos codigos, los podras utilizar para recuperar tu cuenta si olvidas tu contraseña."</string>
+    <string name="AUTH_CODE_TEXT_CONTINUE">Continuar</string>
 
     <!-- Sign up texts -->
     <string name="sign_up_title">Primeros pasos</string>

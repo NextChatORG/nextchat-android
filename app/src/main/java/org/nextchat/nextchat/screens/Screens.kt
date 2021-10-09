@@ -1,4 +1,4 @@
-package org.nextchat.nextchat.core
+package org.nextchat.nextchat.screens
 
 sealed class Screens(val route: String) {
     // Index screens

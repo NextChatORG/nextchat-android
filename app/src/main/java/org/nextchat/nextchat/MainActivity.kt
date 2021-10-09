@@ -16,7 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.nextchat.nextchat.core.Screens
+import org.nextchat.nextchat.screens.Screens
 import org.nextchat.nextchat.screens.home.HomeScreen
 import org.nextchat.nextchat.screens.index.RecoveryCodesScreen
 import org.nextchat.nextchat.screens.index.SignUpScreen
@@ -36,13 +36,13 @@ class MainActivity : ComponentActivity() {
 
         // Content
         setContent {
+
             // States
             var loading by remember { mutableStateOf(true) }
 
             // Hooks
             val navController = rememberNavController()
             val mainScope = rememberCoroutineScope()
-
             // Effects
             mainScope.launch {
                 val preferences = accountStorage.data.first()
@@ -53,7 +53,6 @@ class MainActivity : ComponentActivity() {
                     loading = false
                 }
             }
-
             // Content
             NextChatTheme {
                 if (loading) {
@@ -97,4 +96,5 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
 }

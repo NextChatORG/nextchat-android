@@ -6,6 +6,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -14,7 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.nextchat.nextchat.core.Screens
+import org.nextchat.nextchat.screens.Screens
 import org.nextchat.nextchat.utils.storage_keys
 
 @SuppressLint("CoroutineCreationDuringComposition")
@@ -38,6 +39,7 @@ fun HomeScreen(
             username = uname ?: ""
         }
     }
+
 
     // Content
     Scaffold {

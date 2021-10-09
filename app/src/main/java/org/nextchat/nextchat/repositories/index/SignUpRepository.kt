@@ -9,7 +9,7 @@ import com.apollographql.apollo3.exception.ApolloException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.nextchat.nextchat.SignUpMutation
-import org.nextchat.nextchat.core.Screens
+import org.nextchat.nextchat.screens.Screens
 import org.nextchat.nextchat.core.apolloClient
 import org.nextchat.nextchat.utils.getTextByKey
 import org.nextchat.nextchat.utils.storage_keys
