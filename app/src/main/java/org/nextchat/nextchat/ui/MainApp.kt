@@ -12,6 +12,7 @@ import org.nextchat.nextchat.ui.screens.Screens
 import org.nextchat.nextchat.ui.screens.general.SplashScreen
 import org.nextchat.nextchat.ui.screens.home.HomeScreen
 import org.nextchat.nextchat.ui.screens.index.RecoveryCodesScreen
+import org.nextchat.nextchat.ui.screens.index.SignInScreen
 import org.nextchat.nextchat.ui.screens.index.SignUpScreen
 import org.nextchat.nextchat.ui.screens.index.WelcomeScreen
 
@@ -41,6 +42,11 @@ fun MainApp(
             SignUpScreen(
                 navController = navController,
                 signUpRepository = repositoriesManager.signUp,
+            )
+        }
+        composable(route = Screens.SignIn.route) {
+            SignInScreen(
+                navController = navController
             )
         }
         composable(

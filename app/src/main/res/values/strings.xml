@@ -35,6 +35,12 @@
     <string name="sign_up_screen_sign_in_button">I have an account</string>
     <string name="sign_up_screen_submit_button">Sign up</string>
 
+    <!--Sign In texts-->
+    <string name="sign_in_screen_title">Welcome back!</string>
+    <string name="sign_in_screen_submit_button">Log In</string>
+    <string name="sign_in_screen_forgot_password_button">Forgot password</string>
+
     <!-- Recovery codes texts -->
     <string name="recovery_codes_screen_title">Recovery codes</string>
+
 </resources>
