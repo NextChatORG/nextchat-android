@@ -11,10 +11,7 @@ import org.nextchat.nextchat.repositories.RepositoriesManager
 import org.nextchat.nextchat.ui.screens.Screens
 import org.nextchat.nextchat.ui.screens.general.SplashScreen
 import org.nextchat.nextchat.ui.screens.home.HomeScreen
-import org.nextchat.nextchat.ui.screens.index.RecoveryCodesScreen
-import org.nextchat.nextchat.ui.screens.index.SignInScreen
-import org.nextchat.nextchat.ui.screens.index.SignUpScreen
-import org.nextchat.nextchat.ui.screens.index.WelcomeScreen
+import org.nextchat.nextchat.ui.screens.index.*
 
 @Composable
 fun MainApp(
@@ -48,6 +45,9 @@ fun MainApp(
             SignInScreen(
                 navController = navController
             )
+        }
+        composable(route = Screens.ForgotPassword.route) {
+            ForgotPasswordScreen()
         }
         composable(
             route = Screens.RecoveryCodes.route + "/{codes}",

@@ -40,7 +40,6 @@
     <string name="sign_in_screen_submit_button">Iniciar Sesión</string>
     <string name="sign_in_screen_forgot_password_button">Olvidaste tu contraseña</string>
 
-
     <!-- Recovery codes texts -->
     <string name="recovery_codes_screen_title">Códigos de recuperación</string>
 </resources>

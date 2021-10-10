@@ -8,6 +8,7 @@ sealed class Screens(val route: String) {
     object Welcome : Screens(route = "welcome")
     object SignIn : Screens(route = "sign_in")
     object SignUp : Screens(route = "sign_up")
+    object ForgotPassword : Screens(route = "forgot_password")
     object RecoveryCodes : Screens(route = "recovery_codes")
 
     // Home screens

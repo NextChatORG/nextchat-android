@@ -60,7 +60,7 @@ fun SignUpScreen(
         TextFieldError(message = usernameError)
         FractionSpacer(fraction = 0.5F)
         // Password input
-        PasswordInput(
+        org.nextchat.nextchat.ui.widgets.PasswordInput(
             error = passwordError,
             label = R.string.sign_up_screen_password_input,
             value = password,
@@ -70,7 +70,7 @@ fun SignUpScreen(
             }
         )
         // Repeat password input
-        PasswordInput(
+        org.nextchat.nextchat.ui.widgets.PasswordInput(
             error = repeatPasswordError,
             label = R.string.sign_up_screen_repeat_password_input,
             value = repeatPassword,
@@ -122,37 +122,6 @@ fun SignUpScreen(
     }
 }
 
-@Composable
-private fun PasswordInput(
-    error: String,
-    label: Int,
-    value: String,
-    onValueChange: (String) -> Unit
-) {
-    // State
-    var showingPassword by remember { mutableStateOf(false) }
-
-    // Content
-    OutlinedTextField(
-        isError = error.isNotEmpty(),
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-        label = { ResourceText(id = label) },
-        modifier = Modifier.fillMaxWidth(),
-        trailingIcon = {
-            IconButton(onClick = { showingPassword = !showingPassword }) {
-                Icon(
-                    imageVector = if (showingPassword) { Icons.Filled.VisibilityOff } else { Icons.Filled.Visibility },
-                    contentDescription = if (showingPassword) { "Hide password" } else { "Show password" }
-                )
-            }
-        },
-        value = value,
-        visualTransformation = if (showingPassword) { VisualTransformation.None } else { PasswordVisualTransformation() },
-        onValueChange = onValueChange
-    )
-    TextFieldError(message = error)
-    FractionSpacer(fraction = 0.5F)
-}
 
 @Composable
 private fun SignInButton(

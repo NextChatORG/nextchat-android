@@ -51,7 +51,7 @@ fun SignInScreen(
         TextFieldError(message = usernameError)
         FractionSpacer(fraction = 0.5F)
         // Password input
-        PasswordInput(
+        org.nextchat.nextchat.ui.widgets.PasswordInput(
             error = passwordError,
             label = R.string.sign_up_screen_password_input,
             value = password,
@@ -74,49 +74,17 @@ fun SignInScreen(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth()
         ) {
-            ForgotPasswordButton()
+            ForgotPasswordButton(navController)
         }
     }
 }
 
 @Composable
-private fun PasswordInput(
-    error: String,
-    label: Int,
-    value: String,
-    onValueChange: (String) -> Unit
-) {
-    // State
-    var showingPassword by remember { mutableStateOf(false) }
-
-    // Content
-    OutlinedTextField(
-        isError = error.isNotEmpty(),
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-        label = { ResourceText(id = label) },
-        modifier = Modifier.fillMaxWidth(),
-        trailingIcon = {
-            IconButton(onClick = { showingPassword = !showingPassword }) {
-                Icon(
-                    imageVector = if (showingPassword) { Icons.Filled.VisibilityOff } else { Icons.Filled.Visibility },
-                    contentDescription = if (showingPassword) { "Hide password" } else { "Show password" }
-                )
-            }
-        },
-        value = value,
-        visualTransformation = if (showingPassword) { VisualTransformation.None } else { PasswordVisualTransformation() },
-        onValueChange = onValueChange
-    )
-    TextFieldError(message = error)
-    FractionSpacer(fraction = 0.5F)
-}
-
-@Composable
-private fun ForgotPasswordButton(
-) {
+private fun ForgotPasswordButton(navController: NavController) {
     TextButton(
         onClick = {
-            Toast.makeText(null,"Olvide contraseña", Toast.LENGTH_SHORT).show()
+            navController.navigate(route = Screens.ForgotPassword.route)
+
         }
     ) {
         ResourceText(
