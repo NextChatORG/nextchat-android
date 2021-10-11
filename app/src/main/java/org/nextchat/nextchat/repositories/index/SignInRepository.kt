@@ -3,30 +3,28 @@ package org.nextchat.nextchat.repositories.index
 import android.content.Context
 import androidx.datastore.preferences.core.edit
 import com.apollographql.apollo3.exception.ApolloException
-import org.nextchat.nextchat.SignUpMutation
+import org.nextchat.nextchat.SignInQuery
 import org.nextchat.nextchat.constants.StorageKeys
 import org.nextchat.nextchat.repositories.RepositoriesManager
 import org.nextchat.nextchat.ui.screens.Screens
 import org.nextchat.nextchat.utils.getErrorTextByKey
 
-class SignUpRepository(
+class SignInRepository(
     private val manager: RepositoriesManager,
 ) {
     suspend fun handleSubmit(
         // Fields
         username: String,
         password: String,
-        confirmPassword: String,
         // General
         context: Context,
         // Callbacks
         onErrors: (Map<String, String>) -> Unit
     ) {
         try {
-            val response = this.manager.apolloClient.mutate(SignUpMutation(
+            val response = this.manager.apolloClient.query(SignInQuery(
                 username = username,
                 password = password,
-                confirmPassword = confirmPassword,
             ))
 
             if (response.hasErrors()) {
@@ -52,7 +50,7 @@ class SignUpRepository(
                 // Clear all errors messages.
                 onErrors(mutableMapOf())
 
-                val data = response.data!!.signUp
+                val data = response.data!!.signIn
 
                 // Save data
                 this.manager.accountStorage.edit { preferences ->
@@ -64,16 +62,12 @@ class SignUpRepository(
                 }
 
                 // Redirect to recovery codes screen.
-                this.manager.navController.navigate(
-                    route = Screens.RecoveryCodes.withArguments(
-                        data.recoverCodes.joinToString(separator = ";")
-                    )
-                ) {
+                this.manager.navController.navigate(route = Screens.Splash.route) {
                     popUpTo(route = Screens.Home.route)
                 }
             }
         } catch (e: ApolloException) {
-            println("Sign up error: $e")
+            println("Sign in error: $e")
         }
     }
 }
