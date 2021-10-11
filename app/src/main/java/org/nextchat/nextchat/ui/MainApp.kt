@@ -35,15 +35,16 @@ fun MainApp(
         composable(route = Screens.Welcome.route) {
             WelcomeScreen(navController = navController)
         }
+        composable(route = Screens.SignIn.route) {
+            SignInScreen(
+                navController = navController,
+                signInRepository = repositoriesManager.signIn,
+            )
+        }
         composable(route = Screens.SignUp.route) {
             SignUpScreen(
                 navController = navController,
                 signUpRepository = repositoriesManager.signUp,
-            )
-        }
-        composable(route = Screens.SignIn.route) {
-            SignInScreen(
-                navController = navController
             )
         }
         composable(route = Screens.ForgotPassword.route) {
