@@ -4,6 +4,7 @@ import androidx.navigation.NavController
 import com.apollographql.apollo3.ApolloClient
 import org.nextchat.nextchat.constants.AccountStorage
 import org.nextchat.nextchat.constants.Url
+import org.nextchat.nextchat.repositories.index.SignInRepository
 import org.nextchat.nextchat.repositories.index.SignUpRepository
 
 class RepositoriesManager(
@@ -13,5 +14,6 @@ class RepositoriesManager(
     internal val apolloClient = ApolloClient(Url.API_URL)
 
     // Index repositories
-    val signUp: SignUpRepository = SignUpRepository(this)
+    val signIn = SignInRepository(this)
+    val signUp = SignUpRepository(this)
 }
