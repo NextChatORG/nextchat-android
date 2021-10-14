@@ -12,7 +12,9 @@ input Filter {
 }
 
 type GraphQLMutations {
-  signUp(username: String!, password: String!, confirmPassword: String!): SignUpResponse!
+  recoverPassword(password: String!, repeatPassword: String!, recoveryCode: String!): RecoverPasswordResponse!
+
+  signUp(username: String!, betaKey: String!, password: String!, repeatPassword: String!): SignUpResponse!
 
   updatePermission(key: PermissionKey!, roles: [ObjectId!]!): Permission!
 }
@@ -91,6 +93,12 @@ enum PermissionManagement {
   USERS
 }
 
+type RecoverPasswordResponse {
+  passwordChanged: Boolean!
+
+  recoveryCodes: [String!]!
+}
+
 type Role {
   id: String!
 
@@ -122,7 +130,7 @@ type SignUpResponse {
 
   accessToken: String!
 
-  recoverCodes: [String!]!
+  recoveryCodes: [String!]!
 }
 
 scalar UUID
