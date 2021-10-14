@@ -27,11 +27,16 @@
     <string name="AUTH_SCREENSHOT_CODES">Please take a screenshot to save the codes below, you could use them to recover your account when you forget its password."</string>
     <string name="AUTH_CODE_TEXT_CONTINUE">Continue</string>
 
+    <!-- Beta texts -->
+    <string name="BETA_EMPTY_KEY">You must enter the beta code</string>
+    <string name="BETA_INVALID_KEY">The beta code is invalid</string>
+
     <!-- Sign up texts -->
     <string name="sign_up_screen_title">Get started</string>
     <string name="sign_up_screen_username_input">Username</string>
     <string name="sign_up_screen_password_input">Password</string>
     <string name="sign_up_screen_repeat_password_input">Confirm the password</string>
+    <string name="sign_up_screen_beta_key_input">Beta code</string>
     <string name="sign_up_screen_sign_in_button">I have an account</string>
     <string name="sign_up_screen_submit_button">Sign up</string>
 
@@ -40,8 +45,6 @@
     <string name="sign_in_screen_submit_button">Log In</string>
     <string name="sign_in_screen_forgot_password_button">Forgot password</string>
 
-
     <!-- Recovery codes texts -->
     <string name="recovery_codes_screen_title">Recovery codes</string>
-
 </resources>

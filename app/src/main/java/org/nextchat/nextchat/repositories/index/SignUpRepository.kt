@@ -15,8 +15,9 @@ class SignUpRepository(
     suspend fun handleSubmit(
         // Fields
         username: String,
+        betaKey: String,
         password: String,
-        confirmPassword: String,
+        repeatPassword: String,
         // General
         context: Context,
         // Callbacks
@@ -25,8 +26,9 @@ class SignUpRepository(
         try {
             val response = this.manager.apolloClient.mutate(SignUpMutation(
                 username = username,
+                betaKey = betaKey,
                 password = password,
-                confirmPassword = confirmPassword,
+                repeatPassword = repeatPassword,
             ))
 
             if (response.hasErrors()) {
@@ -66,7 +68,7 @@ class SignUpRepository(
                 // Redirect to recovery codes screen.
                 this.manager.navController.navigate(
                     route = Screens.RecoveryCodes.withArguments(
-                        data.recoverCodes.joinToString(separator = ";")
+                        data.recoveryCodes.joinToString(separator = ";")
                     )
                 ) {
                     popUpTo(route = Screens.Home.route)

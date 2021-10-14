@@ -44,6 +44,9 @@ fun SignUpScreen(
     var repeatPassword by remember { mutableStateOf("") }
     var repeatPasswordError by remember { mutableStateOf("") }
 
+    var betaKey by remember { mutableStateOf("") }
+    var betaKeyError by remember { mutableStateOf("") }
+
     // Content
     IndexLayout(title = R.string.sign_up_screen_title) {
         // Username input
@@ -79,6 +82,19 @@ fun SignUpScreen(
                 repeatPasswordError = ""
             }
         )
+        // Beta key input
+        OutlinedTextField(
+            isError = betaKeyError.isNotEmpty(),
+            label = { ResourceText(id = R.string.sign_up_screen_beta_key_input) },
+            modifier = Modifier.fillMaxWidth(),
+            value = betaKey,
+            onValueChange = {
+                betaKey = it
+                betaKeyError = ""
+            }
+        )
+        TextFieldError(message = betaKeyError)
+        FractionSpacer(fraction = 0.5F)
         // Terms of conditions and privacy policy message
         ResourceText(
             id = R.string.AUTH_PRIVACY_POLICY,
@@ -95,6 +111,7 @@ fun SignUpScreen(
             SignUpButton(
                 // Inputs
                 username = username,
+                betaKey = betaKey,
                 password = password,
                 repeatPassword = repeatPassword,
                 // General
@@ -113,6 +130,7 @@ fun SignUpScreen(
                             "username" -> { usernameError = message }
                             "password" -> { passwordError = message }
                             "repeat_password" -> { repeatPasswordError = message }
+                            "beta_key" -> { betaKeyError = message }
                             else -> { println("Cannot parse: $field as error (Message: $message)") }
                         }
                     }
@@ -142,6 +160,7 @@ private fun SignInButton(
 private fun SignUpButton(
     // Inputs
     username: String,
+    betaKey: String,
     password: String,
     repeatPassword: String,
     // General
@@ -159,11 +178,12 @@ private fun SignUpButton(
             signUpRepository.handleSubmit(
                 // Fields
                 username = username,
+                betaKey = betaKey,
                 password = password,
-                confirmPassword = repeatPassword,
+                repeatPassword = repeatPassword,
                 // General
                 context = context,
-                    // Callbacks
+                // Callbacks
                 onErrors = onErrors,
             )
         }

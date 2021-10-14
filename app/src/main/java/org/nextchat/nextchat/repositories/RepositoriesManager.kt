@@ -11,7 +11,7 @@ class RepositoriesManager(
     internal val accountStorage: AccountStorage,
     internal val navController: NavController,
 ) {
-    internal val apolloClient = ApolloClient(Url.API_URL)
+    internal val apolloClient = ApolloClient(serverUrl = Url.API_URL)
 
     // Index repositories
     val signIn = SignInRepository(this)

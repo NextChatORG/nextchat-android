@@ -1,10 +1,20 @@
-mutation signUp($username: String!, $password: String!, $confirmPassword: String!) {
-    signUp(username: $username, password: $password, confirmPassword: $confirmPassword) {
+mutation signUp(
+    $username: String!,
+    $betaKey: String!,
+    $password: String!,
+    $repeatPassword: String!
+) {
+    signUp(
+        username: $username
+        betaKey: $betaKey
+        password: $password
+        repeatPassword: $repeatPassword
+    ) {
         accessToken
         id
         role
         permissions
-        recoverCodes
+        recoveryCodes
         username
     }
 }

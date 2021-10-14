@@ -23,6 +23,10 @@ fun getErrorTextByKey(context: Context, textKey: String): String {
 
         "AUTH_WRONG_PASSWORD" -> context.getString(R.string.AUTH_WRONG_PASSWORD)
 
+        // Beta messages
+        "BETA_EMPTY_KEY" -> context.getString(R.string.BETA_EMPTY_KEY)
+        "BETA_INVALID_KEY" -> context.getString(R.string.BETA_INVALID_KEY)
+
         // Default
         else -> textKey
     }

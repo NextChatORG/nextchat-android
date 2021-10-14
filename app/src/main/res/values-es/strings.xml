@@ -27,11 +27,16 @@
     <string name="AUTH_SCREENSHOT_CODES">Por favor haz una captura de pantalla para guardar estos códigos, los podrás utilizar para recuperar tu cuenta si olvidas la contraseña.</string>
     <string name="AUTH_CODE_TEXT_CONTINUE">Continuar</string>
 
+    <!-- Beta texts -->
+    <string name="BETA_EMPTY_KEY">Debes ingresar el código beta</string>
+    <string name="BETA_INVALID_KEY">El código beta es inválido</string>
+
     <!-- Sign up texts -->
     <string name="sign_up_screen_title">Primeros pasos</string>
     <string name="sign_up_screen_username_input">Nombre de usuario</string>
     <string name="sign_up_screen_password_input">Contraseña</string>
     <string name="sign_up_screen_repeat_password_input">Confirma la contraseña</string>
+    <string name="sign_up_screen_beta_key_input">Código beta</string>
     <string name="sign_up_screen_sign_in_button">Tengo una cuenta</string>
     <string name="sign_up_screen_submit_button">Finalizar</string>
 
