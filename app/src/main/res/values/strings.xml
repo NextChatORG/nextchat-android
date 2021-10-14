@@ -42,8 +42,9 @@
 
     <!--Sign In texts-->
     <string name="sign_in_screen_title">Welcome back!</string>
-    <string name="sign_in_screen_submit_button">Log In</string>
-    <string name="sign_in_screen_forgot_password_button">Forgot password</string>
+    <string name="sign_in_screen_forgot_password_button">Forgot password?</string>
+    <string name="sign_in_screen_sign_up_button">I don\'t have an account</string>
+    <string name="sign_in_screen_submit_button">Sign in</string>
 
     <!-- Recovery codes texts -->
     <string name="recovery_codes_screen_title">Recovery codes</string>

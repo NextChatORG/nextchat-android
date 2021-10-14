@@ -4,10 +4,8 @@ import android.annotation.SuppressLint
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.navigation.NavController
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.nextchat.nextchat.constants.AccountStorage
 import org.nextchat.nextchat.constants.StorageKeys
 import org.nextchat.nextchat.ui.screens.Screens
@@ -20,7 +18,7 @@ fun SplashScreen(
 ) {
     // States
     var accessToken by remember { mutableStateOf<String?>(null) }
-    var loading by remember { mutableStateOf(false) }
+    var loading by remember { mutableStateOf(true) }
 
     // Hooks
     val scope = rememberCoroutineScope()
@@ -30,10 +28,8 @@ fun SplashScreen(
         val preferences = accountStorage.data.first()
         val token = preferences[StorageKeys.accountToken]
 
-        withContext(Dispatchers.Main) {
-            accessToken = token
-            loading = false
-        }
+        accessToken = token
+        loading = false
     }
 
     // Loading content

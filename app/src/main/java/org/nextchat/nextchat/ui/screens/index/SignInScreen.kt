@@ -9,8 +9,10 @@ import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.em
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import org.nextchat.nextchat.ui.layouts.IndexLayout
@@ -57,15 +59,18 @@ fun SignInScreen(
             onValueChange = { value ->
                 password = value
                 passwordError = ""
-            }
+            },
+            space = 0.2F,
         )
-        // Terms of conditions and privacy policy message
+        // Forgot password button
+        ForgotPasswordButton(navController)
         FractionSpacer(fraction = 3F)
         // Actions
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth()
         ) {
+            SignUpButton(navController = navController)
             SignInButton(
                 // Fields
                 username = username,
@@ -90,12 +95,6 @@ fun SignInScreen(
                 }
             )
         }
-        Row(
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            ForgotPasswordButton(navController)
-        }
     }
 }
 
@@ -108,6 +107,23 @@ private fun ForgotPasswordButton(navController: NavController) {
     ) {
         ResourceText(
             id = R.string.sign_in_screen_forgot_password_button,
+            color = Color.Gray,
+            textAlign = TextAlign.Center,
+            fontSize = 3.5.em
+        )
+    }
+}
+
+@Composable
+private fun SignUpButton(
+    navController: NavController
+) {
+    TextButton(
+        modifier = Modifier.fillMaxWidth(0.6F),
+        onClick = { navController.navigate(route = Screens.SignUp.route) }
+    ) {
+        ResourceText(
+            id = R.string.sign_in_screen_sign_up_button,
             textAlign = TextAlign.Center
         )
     }

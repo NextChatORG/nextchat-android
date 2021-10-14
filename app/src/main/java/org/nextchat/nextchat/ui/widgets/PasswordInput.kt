@@ -20,7 +20,8 @@ fun PasswordInput(
     error: String,
     label: Int,
     value: String,
-    onValueChange: (String) -> Unit
+    onValueChange: (String) -> Unit,
+    space: Float = 0.5F
 ) {
     // State
     var showingPassword by remember { mutableStateOf(false) }
@@ -44,5 +45,5 @@ fun PasswordInput(
         onValueChange = onValueChange
     )
     TextFieldError(message = error)
-    FractionSpacer(fraction = 0.5F)
+    FractionSpacer(fraction = space)
 }

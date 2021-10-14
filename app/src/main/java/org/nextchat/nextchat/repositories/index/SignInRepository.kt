@@ -61,9 +61,9 @@ class SignInRepository(
                     preferences[StorageKeys.accountUsername] = data.username
                 }
 
-                // Redirect to recovery codes screen.
+                // Redirect to splash screen.
                 this.manager.navController.navigate(route = Screens.Splash.route) {
-                    popUpTo(route = Screens.Home.route)
+                    popUpTo(route = Screens.Splash.route)
                 }
             }
         } catch (e: ApolloException) {
