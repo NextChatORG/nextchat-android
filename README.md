@@ -2,7 +2,7 @@
 	<p>
 		<img width ="200" src='./docs/logo.png'>
 	</p>
-	<h1> NextChat Message Social Network <h1>
+	<h1> NextChat Message Social Network </h1>
 	<q> Connect with other people across the world in real-time!</q>
 </div>
 
@@ -13,7 +13,6 @@ Here you found the Android NextChat Client
 # What need for help to the client?
 
 - Android Studio
-- NextChat API Key
 
 # Steps to contribute
 
@@ -33,12 +32,13 @@ Check the License file for more information [here](./LICENSE)
 
 Thanks to this amazing people for make NextChat better:
 
-- @daschdev `NextChat Founder`
-- @jheysonsaavedr4 `NextChat Developer`
-- @teodev1611 `NextChat Developer`
+- [@danielsolartech](https://github.com/danielsolartech) `NextChat Founder`
+- [@jheysonsaavedr4](https://github.com/jheysonsaavedr4) `NextChat Developer`
+- [@teodev1611](https://github.com/teodev1611) `NextChat Developer`
+- [@sarcowww](https://github.com/sarcowww) `NextChat Developer`
 
 > If you help to NextChat feel free to add here.
 
 ---
 
-Made with :heart: in Colombia and Ecuador
+Made with :heart: in Colombia, Ecuador and Chile
