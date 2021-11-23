@@ -39,7 +39,7 @@ fun SplashScreen(
     }
 
     val route = if (accessToken == null) {
-        Screens.Welcome.route
+        Screens.SignIn.route
     } else {
         Screens.Home.route
     }

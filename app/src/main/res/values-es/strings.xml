@@ -41,7 +41,7 @@
     <string name="sign_up_screen_submit_button">Finalizar</string>
 
     <!--Sign In texts-->
-    <string name="sign_in_screen_title">¡Bienvenido/a de vuelta!</string>
+    <string name="sign_in_screen_title">Inicia sesión</string>
     <string name="sign_in_screen_forgot_password_button">¿Olvidaste tu contraseña?</string>
     <string name="sign_in_screen_sign_up_button">Ya tengo una cuenta</string>
     <string name="sign_in_screen_submit_button">Iniciar sesión</string>

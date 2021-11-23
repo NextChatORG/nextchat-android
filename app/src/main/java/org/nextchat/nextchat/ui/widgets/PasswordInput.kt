@@ -1,10 +1,9 @@
 package org.nextchat.nextchat.ui.widgets
 
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -13,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun PasswordInput(
@@ -28,10 +27,14 @@ fun PasswordInput(
 
     // Content
     OutlinedTextField(
+        colors = TextFieldDefaults.textFieldColors(
+            textColor = MaterialTheme.colors.onBackground
+        ),
         isError = error.isNotEmpty(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         label = { ResourceText(id = label) },
         modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp),
         trailingIcon = {
             IconButton(onClick = { showingPassword = !showingPassword }) {
                 Icon(

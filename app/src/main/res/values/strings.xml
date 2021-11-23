@@ -41,7 +41,7 @@
     <string name="sign_up_screen_submit_button">Sign up</string>
 
     <!--Sign In texts-->
-    <string name="sign_in_screen_title">Welcome back!</string>
+    <string name="sign_in_screen_title">Sign in</string>
     <string name="sign_in_screen_forgot_password_button">Forgot password?</string>
     <string name="sign_in_screen_sign_up_button">I don\'t have an account</string>
     <string name="sign_in_screen_submit_button">Sign in</string>

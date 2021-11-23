@@ -2,12 +2,14 @@ package org.nextchat.nextchat
 
 import android.content.Context
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.runtime.remember
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.navigation.compose.rememberNavController
-import org.nextchat.nextchat.repositories.RepositoriesManager
+import org.nextchat.nextchat.models.index.SignInViewModel
 import org.nextchat.nextchat.ui.MainApp
 import org.nextchat.nextchat.ui.theme.NextChatTheme
 
@@ -17,25 +19,24 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
+
+        // View models
+        val signInViewModel by viewModels<SignInViewModel>()
+
         // Content
         setContent {
             // Hooks
             val navController = rememberNavController()
-
-            // Variables
-            val repositories = remember {
-                RepositoriesManager(
-                    accountStorage = accountStorage,
-                    navController = navController,
-                )
-            }
 
             // Content
             NextChatTheme {
                 MainApp(
                     accountStorage = accountStorage,
                     navController = navController,
-                    repositoriesManager = repositories,
+
+                    // View models
+                    signInViewModel = signInViewModel
                 )
             }
         }
