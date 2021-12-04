@@ -1,52 +1,29 @@
 package org.nextchat.nextchat.ui.screens.general
 
-import android.annotation.SuppressLint
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
-import androidx.navigation.NavController
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
-import org.nextchat.nextchat.constants.AccountStorage
-import org.nextchat.nextchat.constants.StorageKeys
-import org.nextchat.nextchat.ui.screens.Screens
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import org.nextchat.nextchat.ui.viewmodels.ViewModels
 
-@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
-fun SplashScreen(
-    accountStorage: AccountStorage,
-    navController: NavController
-) {
-    // States
-    var accessToken by remember { mutableStateOf<String?>(null) }
-    var loading by remember { mutableStateOf(true) }
-
+fun SplashScreen() {
     // Hooks
-    val scope = rememberCoroutineScope()
+    val viewModel = ViewModels.splash
 
-    // Effects
-    scope.launch {
-        val preferences = accountStorage.data.first()
-        val token = preferences[StorageKeys.accountToken]
-
-        accessToken = token
-        loading = false
-    }
-
-    // Loading content
-    if (loading) {
-        Text(text = "Loading data...")
-        return
-    }
-
-    val route = if (accessToken == null) {
-        Screens.SignIn.route
-    } else {
-        Screens.Home.route
-    }
-
-    navController.navigate(route = route) {
-        popUpTo(route = route) {
-            inclusive = true
+    // Content
+    Scaffold(
+        contentColor = Color.White
+    ) {
+        // Loading Content
+        if (viewModel.loading) {
+            CircularProgressIndicator()
+        }
+        // Content
+        else {
+            Text(text = "Ruta a entrar: ${viewModel.redirectTo}", style = TextStyle(color = Color.White))
         }
     }
 }

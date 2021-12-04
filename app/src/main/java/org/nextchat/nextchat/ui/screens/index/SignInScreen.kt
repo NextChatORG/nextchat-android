@@ -13,26 +13,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.navigation.NavController
 import org.nextchat.nextchat.R
-import org.nextchat.nextchat.constants.AccountStorage
-import org.nextchat.nextchat.models.index.SignInViewModel
 import org.nextchat.nextchat.ui.screens.Screens
-import org.nextchat.nextchat.ui.widgets.*
+import org.nextchat.nextchat.ui.common.*
+import org.nextchat.nextchat.ui.screens.Navigator
 
 @Composable
-fun SignInScreen(
-    accountStorage: AccountStorage,
-    navController: NavController,
-    signInViewModel: SignInViewModel
-) {
+fun SignInScreen() {
     Scaffold(backgroundColor = MaterialTheme.colors.primary) {
         ConstraintLayout(Modifier.fillMaxHeight()) {
             val (backgroundImage, logoContent, formContent) = createRefs()
@@ -96,8 +89,6 @@ fun SignInScreen(
             }
             // Form
             FormContent(
-                accountStorage,
-                navController,
                 Modifier
                     .fillMaxWidth()
                     .constrainAs(formContent) {
@@ -106,7 +97,6 @@ fun SignInScreen(
                     .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
                     .background(color = MaterialTheme.colors.onPrimary)
                     .padding(vertical = 24.dp, horizontal = 16.dp),
-                signInViewModel,
             )
         }
     }
@@ -114,10 +104,7 @@ fun SignInScreen(
 
 @Composable
 private fun FormContent(
-    accountStorage: AccountStorage,
-    navController: NavController,
     modifier: Modifier,
-    signInViewModel: SignInViewModel,
 ) {
     Column(modifier) {
         // Form title
@@ -140,32 +127,36 @@ private fun FormContent(
         FractionSpacer(2F)
         // Username input
         TextInput(
-            error = signInViewModel.usernameError,
+            error = "",
             label = R.string.sign_up_screen_username_input,
-            onValueChange = { signInViewModel.handleChangeUsername(it) },
-            value = signInViewModel.username,
+            onValueChange = { },
+            value = "",
         )
         // Password input
         PasswordInput(
-            error = signInViewModel.passwordError,
+            error = "",
             label = R.string.sign_up_screen_password_input,
-            onValueChange = { signInViewModel.handleChangePassword(it) },
+            onValueChange = {  },
             space = 0F,
-            value = signInViewModel.password
+            value = ""
         )
         // Forgot password button
-        ForgotPasswordButton(navController)
+        ForgotPasswordButton()
         FractionSpacer(2F)
         // Submit button
-        SignInButton(accountStorage, navController, signInViewModel)
+        SignInButton()
         FractionSpacer(0.2F)
         // Sign up button
-        SignUpButton(navController)
+        SignUpButton()
     }
 }
 
 @Composable
-private fun ForgotPasswordButton(navController: NavController) {
+private fun ForgotPasswordButton() {
+    // Hooks
+    val navController = Navigator.current
+
+    // Content
     TextButton(
         onClick = { navController.navigate(route = Screens.ForgotPassword.route) }
     ) {
@@ -180,42 +171,34 @@ private fun ForgotPasswordButton(navController: NavController) {
 }
 
 @Composable
-private fun SignInButton(
-    accountStorage: AccountStorage,
-    navController: NavController,
-    signInViewModel: SignInViewModel,
-) {
-    // Hooks
-    val context = LocalContext.current
-
-    // Content
+private fun SignInButton() {
     androidx.compose.material3.Button(
         colors = androidx.compose.material3.ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colors.primary,
         ),
         modifier = Modifier.fillMaxWidth(),
-        onClick = {
-            if (!signInViewModel.isLoading) {
-                signInViewModel.submit(accountStorage, navController, context)
-            }
-        }
+        onClick = {}
     ) {
-        if (signInViewModel.isLoading) {
+        /*if (signInViewModel.isLoading) {
             CircularProgressIndicator(
                 color = MaterialTheme.colors.onPrimary,
                 modifier = Modifier.size(24.dp)
             )
-        } else {
+        } else {*/
             ResourceText(
                 color = MaterialTheme.colors.onPrimary,
                 id = R.string.sign_in_screen_submit_button,
             )
-        }
+        //}
     }
 }
 
 @Composable
-private fun SignUpButton(navController: NavController) {
+private fun SignUpButton() {
+    // Hooks
+    val navController = Navigator.current
+
+    // Content
     androidx.compose.material3.TextButton(
         modifier = Modifier.fillMaxWidth(),
         onClick = { navController.navigate(route = Screens.SignUp.route) }
