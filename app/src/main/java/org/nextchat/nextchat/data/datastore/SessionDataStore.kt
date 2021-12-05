@@ -22,6 +22,16 @@ class SessionDataStore(
         private val usernameKey = stringPreferencesKey("account_username")
     }
 
+    suspend fun clearData() {
+        context.sessionDataStore.edit { preferences ->
+            preferences.remove(permissionsKey)
+            preferences.remove(roleKey)
+            preferences.remove(tokenKey)
+            preferences.remove(userIdKey)
+            preferences.remove(usernameKey)
+        }
+    }
+
     suspend fun getData(): SessionData? {
         return context.sessionDataStore.data.map { preferences ->
             val permissions = preferences[permissionsKey]

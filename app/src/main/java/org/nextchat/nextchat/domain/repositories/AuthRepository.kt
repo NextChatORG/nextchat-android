@@ -11,9 +11,12 @@ class AuthRepository(
     private val authService: AuthService,
     private val sessionDataStore: SessionDataStore
 ) {
+    companion object {
+        private const val TAG = "AUTH_REPOSITORY"
+    }
+
     suspend fun isLogged(): Boolean {
         val accountToken = sessionDataStore.getToken()
-        Log.i("Account_token", "Token: $accountToken")
         return accountToken != null
     }
 
@@ -23,7 +26,10 @@ class AuthRepository(
     ): ApiResult<ApiError, Boolean> {
         return try {
             val result = authService.signIn(SignInBody(password, username))
+            Log.d(TAG, "Sign in data: $result")
+
             sessionDataStore.setDataFromSignIn(result)
+
             successResult(true)
         } catch (e: Exception) {
             errorResult(parseApiErrors(e))

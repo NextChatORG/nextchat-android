@@ -1,6 +1,7 @@
 package org.nextchat.nextchat.utils
 
 import android.content.Context
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.nextchat.nextchat.R
@@ -8,8 +9,11 @@ import org.nextchat.nextchat.domain.models.errors.FieldErrorResponse
 import retrofit2.HttpException
 import java.lang.Exception
 
+private const val TAG = "API_ERRORS"
+
 data class ApiError(
-    var fieldError: FieldErrorResponse?
+    var fieldError: FieldErrorResponse?,
+    var otherError: Exception?
 )
 
 fun getErrorTextByKey(context: Context, textKey: String): String {
@@ -42,15 +46,27 @@ fun getErrorTextByKey(context: Context, textKey: String): String {
 }
 
 fun parseApiErrors(e: Exception) : ApiError {
-    val result = ApiError(fieldError = null)
+    val result = ApiError(
+        fieldError = null,
+        otherError = null
+    )
 
     if (e is HttpException) {
         val body = e.response()!!.errorBody()!!.string()
 
-        result.fieldError = Gson().fromJson(
-            body,
-            object : TypeToken<FieldErrorResponse>() {}.type
-        )
+        Log.i(TAG, "Body: $body")
+
+        try {
+            result.fieldError = Gson().fromJson(
+                body,
+                object : TypeToken<FieldErrorResponse>() {}.type
+            )
+        } catch (e: Exception) {
+            Log.e(TAG, "Cannot parse field error: $e")
+        }
+    } else {
+        Log.e(TAG, "Unexpected error: $e")
+        result.otherError = e
     }
 
     return result

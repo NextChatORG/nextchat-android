@@ -7,6 +7,14 @@ sealed class ApiResult<out E, out R> {
     fun isError(): Boolean = this is Error
     fun isSuccess(): Boolean = this is Success
 
+    fun getErrorOrNull(): E? {
+        return if (this is Error) {
+            error
+        } else {
+            null
+        }
+    }
+
     fun getOrNull(): R? {
         return if (this is Success) {
             data
